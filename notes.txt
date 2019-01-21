@@ -1,0 +1,8 @@
+STEPS
+
+1. Create a GitHub repo, clone it locally and move inside the project's directory
+2. Add a README.md file
+3. Add a .gitignore file
+4. Add a LICENSE file
+5. Run 'yarn init'
+6.  
