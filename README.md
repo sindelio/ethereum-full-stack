@@ -5,7 +5,7 @@ This project is a demonstration of a full stack Ethereum application.
 ## Features
 
 - Dependency Management: Yarn
-  - Monorepo management with a workspace
+  - Monorepo management with workspaces
 - Version Control: Git
   - Rebase merging style
 - Infrastructure

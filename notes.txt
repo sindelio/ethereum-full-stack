@@ -1,8 +1,8 @@
-STEPS
+- This private network is using POA (clique), to use POW create another genesis file with puppeth, it will be easier than trying to manually edit the genesis file. 
+- The genesis.json file we generated via puppeth. It's a great tool to create genesis files.
+- The static-nodes.json file has to live in <datadir>/geth because it's read automatically from that path. This file specifies some nodes (usually bootnodes) to connect to automatically when the node is started.
+- A bootnode is a trusted node within the network, one that holds a canonical chain that other nodes copy to themselves.
+- Sealer is the name given to miner nodes in POA consensus
+- I used web3 to decrypt and see the private key of the nodes' accounts
+- The static-nodes.json was created after running the network once, with the nodes separated/unconnected, and then putting their Enodes inside the static-nodes.json file.
 
-1. Create a GitHub repo, clone it locally and move inside the project's directory
-2. Add a README.md file
-3. Add a .gitignore file
-4. Add a LICENSE file
-5. Run 'yarn init'
-6.  

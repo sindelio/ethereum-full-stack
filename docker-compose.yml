@@ -1,0 +1,56 @@
+version: '3.7'
+services:
+
+  geth1:
+    container_name: geth1
+    # Container names must be unique, you cannot scale a service beyond 1 container if you have specified a custom name.
+    build: 
+      context: ./infrastructure
+      dockerfile: geth1.Dockerfile
+    # environment:
+    #   - NODE=geth1
+    volumes:
+      - 'geth1_data:/etherdata'
+    networks:
+      default:
+        aliases:
+        - geth1
+      blockchain_net:
+        ipv4_address: '172.13.0.2'
+    ports:
+      - "8545:8545" # host_port:container_port
+      - "30303:30303"
+
+  geth2:
+    container_name: geth2
+    build: 
+      context: ./infrastructure
+      dockerfile: geth2.Dockerfile
+    # environment:
+    #   - NODE=geth2
+    volumes:
+      - 'geth2_data:/etherdata'
+    networks:
+      default:
+        aliases:
+        - geth2
+      blockchain_net:
+        ipv4_address: '172.13.0.3'
+    ports:
+      - "8546:8545"
+      - "30304:30303"
+
+networks:
+  blockchain_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.13.0.0/16
+      # The blockchain_net is vital because the default network (127.0.0.0/N) is protected via firewalls or something like that, so the ndoes don't actually connect via the default. Some other change would be needed, but it's easier to create a custom network than configuring the security of the default one.
+
+# volumes for non-volatile storage inside the nodes
+volumes:
+  geth1_data:
+  geth2_data:
+  
